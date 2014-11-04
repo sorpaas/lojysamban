@@ -49,6 +49,12 @@ source-repository	head
     type:		git
     location:		git://github.com/YoshikuniJujo/lojysamban.git
 
+library
+    hs-source-dirs:	src
+    exposed-modules:    LojysambanLib, LojbanTools, Prolog2, PrologTools, NotUnif, Unif
+    build-depends:      base >= 4 && < 5, lojbanParser >= 0.1.2, yjtools >= 0.9.16
+    ghc-options:        -Wall
+
 executable		relmoilojysamban
     hs-source-dirs:	src
     main-is:		lojysamban.hs
