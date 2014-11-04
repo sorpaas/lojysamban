@@ -3,7 +3,7 @@
 {-# LANGUAGE TupleSections #-}
 {-# LANGUAGE PatternGuards #-}
 
-module LojysambanLib (ask, readRules, end) where
+module LojysambanLib (ask, readRules, loadRules, end) where
 
 import LojbanTools
 import Prolog2 hiding (ask)
@@ -28,6 +28,9 @@ isFAhO src
 
 readRules :: String -> [Rule Scope Atom]
 readRules = map readSentence . getSentences . (\(Right p) -> p) . parse
+
+loadRules :: [String] -> [Rule Scope Atom]
+loadRules x = foldl (++) [] $ map readRules x
 
 readQuestion :: String -> Fact Scope Atom
 readQuestion =
